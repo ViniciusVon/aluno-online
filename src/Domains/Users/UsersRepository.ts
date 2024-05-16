@@ -1,20 +1,34 @@
+import { AppDataSource } from '../../../db/data-source'
+import { User } from '../../../db/entity'
 import { IUser } from './types'
+
 
 export class UserRepository {
     async getUsers() {
         const db: IUser[] = [
-            {
-                name: "user_1",
-                email: "teste",
-                password: "123"
-            },
-            {
-                name: "user_2",
-                email: "teste2",
-                password: "321"
-            }
+            
         ]
 
         return db
+    }
+    async createUser({ name, surname, email, birthday, password}: IUser) {
+        const UserRepository = AppDataSource.getRepository(User)
+        const user = {
+            name,
+            surname,
+            email,
+            birthday,
+            password
+        }
+        const createdUser = await UserRepository.save(user)
+        
+        return createdUser
+    }
+    async getUserByEmail(email: string){
+        const userRepository = AppDataSource.getRepository(User)
+
+        const user = await userRepository.findOneBy({ email })
+
+        return user
     }
 }

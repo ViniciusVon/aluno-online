@@ -1,6 +1,7 @@
+import { entityName } from '../entity/User'
+
 const { QueryRunner, Table } = require("typeorm");
 
-const entityName = 'users'
 
 module.exports = class CreateUserTable1715707949580 {
 

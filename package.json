@@ -8,13 +8,15 @@
   "scripts": {
     "start": "yarn ts-node-dev ./src/server.ts",
     "dev:server": "yarn ts-node-dev --respawn --ignore-watch node_modules src/server.ts",
-    "typeorm": "typeorm-ts-node-esm",
-    "migration:create": "typeorm migration:create ./db/migration/Create_User_Table",
-    "migration:run": "typeorm -- migration:run -d ./db/data-source.ts"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration:create": "typeorm migration:create ./db/migration/Create_User_Column_Password",
+    "migration:run": "yarn typeorm -- migration:run -d ./db/data-source.ts",
+    "entity:create": "yarn typeorm entity:create ./db/entity/User"
   },
   "keywords": [],
   "description": "",
   "dependencies": {
+    "bcryptjs": "2.4.3",
     "dotenv": "16.4.5",
     "express": "4.19.2",
     "pg": "8.11.5",
