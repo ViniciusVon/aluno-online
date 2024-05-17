@@ -9,8 +9,9 @@
     "start": "yarn ts-node-dev ./src/server.ts",
     "dev:server": "yarn ts-node-dev --respawn --ignore-watch node_modules src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "migration:create": "typeorm migration:create ./db/migration/Create_User_Column_Password",
+    "migration:create": "typeorm migration:create ./db/migration/Create_Courses_Table",
     "migration:run": "yarn typeorm -- migration:run -d ./db/data-source.ts",
+    "migration:revert": "yarn typeorm -- migration:revert -d ./db/data-source.ts",
     "entity:create": "yarn typeorm entity:create ./db/entity/User"
   },
   "keywords": [],
@@ -19,6 +20,7 @@
     "bcryptjs": "2.4.3",
     "dotenv": "16.4.5",
     "express": "4.19.2",
+    "jsonwebtoken": "9.0.2",
     "pg": "8.11.5",
     "reflect-metadata": "0.2.2",
     "sqlite3": "5.1.7",

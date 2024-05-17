@@ -2,18 +2,21 @@ import { Request, Response } from "express"
 import { AuthService } from './AuthService'
 
 export class AuthController {
-  async handle(req: Request, res: Response) {
+  async login(req: Request, res: Response) {
     const { email, password } = req.body
 
     const authService = new AuthService()
-    const isUserAuthenticated = authService.login({ email, password })
+    const authResponse = await authService.login({ email, password })
 
-    if (!isUserAuthenticated) {
+    if (!authResponse) {
       throw new Error("Usuário não encontrado")
     }
 
     const response = {
-      body: "Usuário Autenticado com sucesso"
+      body: {
+        token: authResponse.token,
+        user: authResponse.user
+      }
     }
     
     res.send(response)

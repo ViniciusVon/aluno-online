@@ -16,4 +16,7 @@ export class UserController {
 
     res.send(response)
   }
+  async hello(req: Request, res: Response){
+    res.send("PARABENS DEU CERTO")
+  }
 }

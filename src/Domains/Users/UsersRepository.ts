@@ -4,13 +4,6 @@ import { IUser } from './types'
 
 
 export class UserRepository {
-    async getUsers() {
-        const db: IUser[] = [
-            
-        ]
-
-        return db
-    }
     async createUser({ name, surname, email, birthday, password}: IUser) {
         const UserRepository = AppDataSource.getRepository(User)
         const user = {
